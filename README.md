@@ -1,7 +1,25 @@
-# web-programming-2026-template
+# Система знижок для постійних клієнтів
 
-A reusable Django project with no bundled application, SQLite, and Django's
-standard admin, authentication, sessions, messages, and staticfiles support.
+Навчальний проєкт до практичного заняття з міграцій Django. Створений на основі
+шаблону курсу `web-programming-2026-template`.
+
+## Що вже є
+
+- Застосунок `cards` з моделлю `DiscountCard` (`cards/models.py`).
+- Автоматично згенерована міграція `cards/migrations/0001_initial.py`.
+- Модель зареєстрована в адмінці (`cards/admin.py`), щоб зручно переглядати дані.
+
+Таблиця моделі в базі називається `cards_discountcard`.
+
+## Корисні команди для заняття
+
+```bash
+python manage.py showmigrations cards                         # які міграції застосовані
+python manage.py sqlmigrate cards 0001                        # який SQL виконує міграція
+python manage.py makemigrations cards --empty --name <назва>  # порожня міграція
+python manage.py migrate cards <номер>                        # перейти до конкретної міграції
+python manage.py shell                                        # інтерактивна консоль
+```
 
 ## Local setup
 
@@ -54,25 +72,6 @@ To create an account for admin login, run this after applying migrations:
 ```bash
 python manage.py createsuperuser
 ```
-
-## Add your first application
-
-1. Create an app from the directory containing `manage.py` (replace `myapp`
-   with your application name):
-
-   ```bash
-   python manage.py startapp myapp
-   ```
-
-2. Add its generated configuration class, `myapp.apps.MyappConfig`, to
-   `INSTALLED_APPS` in `config/settings.py`.
-3. Define your views and create `myapp/urls.py` with their URL patterns.
-4. Register that URLconf in `config/urls.py` using `path()` and `include()`,
-   choosing a URL prefix for the app and retaining the admin route.
-
-See the official Django 6.1 tutorial for
-[views and URL registration](https://docs.djangoproject.com/en/6.1/intro/tutorial01/)
-and [app registration and models](https://docs.djangoproject.com/en/6.1/intro/tutorial02/).
 
 ## Git attributes
 
